@@ -5,3 +5,5 @@ import * as bootstrap from "bootstrap"
 //import './admin/js/jquery' 
 import './admin/js/app' 
 import './admin/js/pages/dashboard' 
+
+console.log("I am the default admin.js")
