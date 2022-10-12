@@ -1,0 +1,7 @@
+<% flash.each do |key, value| %>
+  <% unless key == "devise" %>
+    <div class="relative text-center">
+      <h1 class="<%= css_class_for_devise(key) %>"><%= value %></h1>
+    </div>
+  <% end %>
+<% end %>

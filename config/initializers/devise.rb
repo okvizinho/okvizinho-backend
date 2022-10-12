@@ -1,4 +1,18 @@
 # frozen_string_literal: true
+#! Create custom failure for turbo
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w(html turbo_stream */*).include? request_format.to_s
+  end
+end
 
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
@@ -9,14 +23,14 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # setup Doorkeeper
   Devise::Doorkeeper.configure_devise(config)
-
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'ac848cf13dbf70350cde1ac8c3e925b81d8db58e7e5ed8c39f959f765cc68bba2a8ee0310b4a0c799d9e016a9dabf5876bd18cdff8b903875a9ba67729c88eb8'
+  # config.secret_key = 'cf68157c8093082332704d753952f84d5c8b42fc9a321c8b7fa616ea225daf5441920e249b6eab8ed8c969470c6c1a47bcd5eff559bfe3f5e98d6f53cf327806'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -32,7 +46,7 @@ Devise.setup do |config|
   # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
-  # config.parent_mailer = 'ActionMailer::Base'
+  config.mailer = 'UserDeviseMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -99,7 +113,7 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing skip: :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:doorkeeper]
+  config.skip_session_storage << :doorkeeper
 
   # By default, Devise cleans up the CSRF token on authentication to
   # avoid CSRF token fixation attacks. This means that, when using AJAX
@@ -128,7 +142,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '7b46ec6b065191d9d18ba91766d4848c369d28bbb19b788ac770329e62ba9d56f5afb1b3833cfeab17a5b2814767c7f3e9bb91cf476c6ff99b4324865cc497ce'
+  # config.pepper = '1a8a119ef52e40260d10892f6181b503f30f38dd63091f153a8c8307c6e556d882ac8f3355ec4349d319f903bacefc2b7ad038d314cbaa969d1a76712bfa4d4f'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -265,7 +279,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -279,10 +293,12 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  # config.warden do |manager|
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
-  # end
+  #! Set custom failure
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
+    #   manager.intercept_401 = false
+    #   manager.default_strategies(scope: :user).unshift :some_external_strategy
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
