@@ -1,14 +1,14 @@
 class AdminController < ApplicationController
-  #before_action :authenticate_admin!
+  before_action :authenticate_admin!
   layout 'admin'
 
-  # def current_page
-  #   params[:page] || 1
-  # end
+  def current_page
+    params[:page] || 1
+  end
 
-  # private
+  private
 
-  # def authenticate_admin!
-  #   redirect_to(new_admin_session_path) unless current_admin
-  # end
+  def authenticate_admin!
+    redirect_to(new_admin_session_path) unless current_admin
+  end
 end

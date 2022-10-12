@@ -1,0 +1,15 @@
+<% flash.each do |key, value|%>
+  <% unless key == "devise" %>
+    <div class="relative text-center">
+      <h3 class="<%= css_class_for_devise(key) %>"><%= value %></h3>
+    </div>
+  <% end %>
+<% end %>
+
+<% if resource.errors.any? %>
+  <% resource.errors.full_messages.each do |msg| %>
+    <div class="relative text-center">
+      <h3 class="text-danger"><%= msg %></h3>
+    </div>
+  <% end %>
+<% end %>
