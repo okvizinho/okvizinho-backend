@@ -7,4 +7,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'site/home#index', as: :site_home
+
+  namespace :admin do
+    #root 'admin/dashboard#index', as: :dashboard
+
+    resources :dashboard
+  end
 end
