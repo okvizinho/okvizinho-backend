@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   root 'site/home#index', as: :site_home
 
   namespace :admin do
-    #root 'admin/dashboard#index', as: :dashboard
+    root "admins#index"
+    resources :admins
 
     resources :dashboard
   end

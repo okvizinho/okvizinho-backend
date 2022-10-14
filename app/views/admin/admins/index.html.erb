@@ -1,0 +1,123 @@
+<div id="app">
+  <%= render partial: "layouts/admin/sidebar" %>
+  <div id="main" class='layout-navbar'>
+    <%= render partial: "layouts/admin/navbar" %>
+    <div id="main-content">
+      <div class="page-heading">
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>Administradores</h3>
+              <p class="text-subtitle text-muted">Lista de Administradores </p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+              <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Layout Default</li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <a class="btn btn-round btn-primary mb-3" href="administradores-novo.html">
+          <i class="bi bi-plus-lg"></i> Adicionar
+        </a>
+        <section class="section">
+          <div class="card">
+            <form action="/admin/admins" accept-charset="UTF-8" method="get">
+              <div class="card bg-transparent mb-3">
+                <div class="card-header"><span class="translation_missing"
+                                            title="translation missing: en.admin.admins.index.search_label_filter">Filtros</span>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <small>Keywords</small>
+                      <input type="text" name="q" id="q" class="form-control"
+                                                    placeholder="Search by Name or Email">
+                    </div>
+                    <div class="col-md-3">
+                      <small>Active</small><br>
+                      <select name="status" id="status" class="form-control">
+                        <option selected="selected" value="">Select Status</option>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <br>
+                      <button class="btn btn-outline-secondary btn-round" type="submit">
+                        <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true"
+                                                        focusable="false" data-prefix="fas" data-icon="search" role="img"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                                        data-fa-i2svg="">
+                          <path fill="currentColor"
+                                                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                          </path>
+                        </svg>
+                        <!-- <span class="fas fa-search"></span> Font Awesome fontawesome.com -->
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+        <section class="section">
+          <div class="card">
+            <div class="card-body">
+              <div class="row" id="table-hover-row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-content">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th>ID</th>
+                              <th>NOME</th>
+                              <th>E-MAIL</th>
+                              <th>STATUS</th>
+                              <th>CRIADO EM</th>
+                              <th>AÇÃO</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                           <% @admins.each do |admin| %>
+                            <tr>
+                              <td class="text-bold-500"><%= admin.id %></td>
+                              <td><%= admin.name %></td>
+                              <td class="text-bold-500"><%= admin.email %></td>
+                              <td><span class="badge bg-success">Ativo</span></td>
+                              <td><%= I18n.l(admin.created_at, format: :long) %></td>
+                              <td>
+                              <%= link_to(edit_admin_admin_path(admin), class: '') do %>
+                                  <span class="badge bg-primary">
+                                    <i class="bi bi-pencil-square font-medium-1"></i>
+                                  </span>
+                                <% end %>
+                                <%= link_to(admin_admin_path(admin), data: { turbo_method: :delete, turbo_confirm: 'Você tem certeza?' },  class: '') do %>
+                                  <i class="badge-circle badge-circle-light-secondary font-medium-1" data-feather="trash"></i>
+                                <% end %>
+                              </td>
+                            </tr>
+                             <% end %>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <%= render partial: "layouts/admin/footer" %>
+</div>

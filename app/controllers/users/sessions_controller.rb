@@ -19,8 +19,8 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def after_sign_out_path_for(resource)
-    return admin_session_path if resource.is_a?(Admin)
-
+    return admin_session_path if resource.is_a?(Symbol) && resource == :admin
+    
     flash[:devise] = true
     site_home_path
   end
