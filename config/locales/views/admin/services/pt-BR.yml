@@ -1,0 +1,25 @@
+pt-BR:
+  admin:
+    services:
+      index:
+        heading: Serviços
+        search_placeholder: :views.defaults.search_placeholder
+        search_text_by: Busca por título
+        title: Título
+        category: Categoria
+        search_label: :views.defaults.search_label
+        search_label_filter: :views.defaults.search_label_filter
+        delete_confirmation: :views.defaults.delete_confirmation
+        created_at: Criado em
+        updated_at: Atualizado em
+        add: :views.defaults.add
+        success_delete: Categoria deletada com sucesso
+      new:
+        heading: Serviços
+        heading_register: Registrar
+      edit:
+        heading: "Serviço #%{id}"
+      form:
+        back: :views.defaults.back
+        save: :views.defaults.save
+        waiting: :views.defaults.waiting

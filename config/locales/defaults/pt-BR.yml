@@ -1,0 +1,25 @@
+pt-BR:
+  views:
+    defaults:
+      add: Adicionar
+      edit: Editar
+      delete: Deletar
+      back: Voltar
+      save: Salvar
+      send: Enviar
+      yes_text: Sim
+      no_text: Não
+      active: Ativo
+      inactive: Inativo
+      deleted: Excluído
+      cancel: Cancelar
+      search_placeholder: Pesquisar
+      search_label: Termo
+      search_label_filter: Filtros
+      delete_confirmation: Você tem certeza?
+      waiting: Aguarde...
+      choose_label: Escolha
+      sucessfully_created: Criado com sucesso!
+      sucessfully_updated: Atualizado com sucesso!
+      sucessfully_deleted: Deletado com sucesso!
+

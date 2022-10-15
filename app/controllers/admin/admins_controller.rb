@@ -1,20 +1,23 @@
 class Admin::AdminsController < AdminController
-  before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin, only: %i[show edit update destroy]
 
   def index
+    @filters = parse_filters
+
     admins = Admin.order(id: :desc)
 
-    if params[:q].present?
-      s = "%#{params[:q]}%"
-      admins = admins.where("name ilike ? OR email ilike ?", s, s)
-    end
+    s = "%#{@filters.q}%"
+    is_active = @filters.is_active.to_f
+    admins = admins.where('name ilike ? OR email ilike ?', s, s) if @filters.q.present?
 
+    if @filters.is_active.present?
+      admins = admins.inactive if is_active.zero?
+      admins = admins.active unless is_active.zero?
+    end
     @admins = admins.page(current_page)
   end
 
-  def home
-  end
-
+  def home; end
 
   def new
     @admin = Admin.new
@@ -30,11 +33,9 @@ class Admin::AdminsController < AdminController
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     params = form_params.to_h
@@ -49,19 +50,24 @@ class Admin::AdminsController < AdminController
 
   def destroy
     @admin.destroy
-    flash[:success] = "Admin removido."
+    flash[:success] = 'Admin removido.'
     redirect_to admin_admins_path
   end
 
   private
 
+  def parse_filters
+    OpenStruct.new(params[:filters])
+  end
+
   def form_params
-    params.require(:admin).permit([
-        :name,
-        :email,
-        :password,
-        :password_confirmation
-    ])
+    params.require(:admin).permit(%i[
+                                    name
+                                    email
+                                    password
+                                    password_confirmation
+                                    is_active
+                                  ])
   end
 
   def set_admin

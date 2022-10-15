@@ -1,0 +1,49 @@
+pt-BR:
+  admin:
+    users:
+      index:
+        heading: Usuários
+        search_placeholder: :views.defaults.search_placeholder
+        search_text_by: Busca por nome, e-mail
+        search_label: :views.defaults.search_label
+        search_label_filter: :views.defaults.search_label_filter
+        delete_confirmation: :views.defaults.delete_confirmation
+        text_select_status: Selecionar Status
+        name: Nome
+        email: E-mail
+        phone: Telefone
+        role: Perfil
+        created_at: Criado em
+        updated_at: Atualizado em
+        add: :views.defaults.add
+        filters:
+          is_active: Ativo?
+          status: Status
+          province: Estado
+          business_segment: Segmento de Negócio
+        filters_options:
+          true: Ativo
+          false: Inativo
+          deleted: Excluido
+        filters_status_options:
+          accepted: Aprovado
+          refused: Reprovado
+          pending: Pre-cadastro
+          deleted: Excluído
+      edit:
+        heading: "Usuário #%{id}"
+      show:
+        heading_subtitle: Informações detalhadas
+        heading_docs: Documentos
+        back: :views.defaults.back
+        btn_accept: Aprovar Cadastro
+        btn_refuse: Recusar Cadastro
+        alert_confirmation: Você tem certeza?
+        modal_title: Recusar Cadastro
+        modal_sub_title: Informe o motivo abaixo e clique em recusar.
+        modal_btn_confirm: Recusar 
+        modal_btn_cancel: Cancelar
+      form:
+        back: :views.defaults.back
+        save: :views.defaults.save
+        waiting: :views.defaults.waiting

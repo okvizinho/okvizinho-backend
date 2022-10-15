@@ -1,0 +1,13 @@
+<% if model.errors.any? %>
+<div class="alert alert-primary" role="alert">
+  <h6 class="text-warning">Desculpe! Ocorreu um erro ao ser salvo:</h6>
+  <ul>
+  <% model.errors.full_messages.each do |message| %>
+    <li class=""><%= message %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+
