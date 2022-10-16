@@ -1,40 +1,73 @@
-<div class="mt-10">
-  <div>
-    <div class="mt-5 md:mt-0 md:col-span-2">
-      <%= form_with model: [:admin, @admin] do |f| %>
-        <%= render('/shared/model_errors', model: @admin) %>
-        <div class="shadow sm:rounded-md">
-          <div class="px-4 py-5 bg-white sm:p-6">
-            <div class="grid grid-cols-2 gap-6">
-              <div class="col-span-2">
-                <%= f.label :name, class: "block text-sm font-medium text-gray-700 required" %>
-                <%= f.text_field :name, required: true, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-              </div>
-
-              <div class="col-span-2">
-                <%= f.label :email, class: "block text-sm font-medium text-gray-700 required" %>
-                <%= f.text_field :email, required: true, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-              </div>
-
-
-              <div class="col-span-2 sm:col-span-1">
-                <%= f.label :password, class: "block text-sm font-medium text-gray-700 #{"required" if @admin.new_record?}" %>
-                <%= f.password_field :password, required: !admin.persisted?, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-              </div>
-
-              <div class="col-span-2 sm:col-span-1">
-                <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700 #{"required" if @admin.new_record?}" %>
-                <%= f.password_field :password_confirmation, required: !admin.persisted?, class: "mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
-              </div>
-
+<div id="app">
+  <%= render partial: "layouts/admin/sidebar" %>
+  <div id="main" class="layout-navbar">
+    <%= render partial: "layouts/admin/navbar" %>
+    <div id="main-content">
+      <div class="page-heading">
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>Administradores</h3>
+              <p class="text-subtitle text-muted">Administrador / <b>Registrar</b></p>
             </div>
           </div>
-          <div class="px-4 py-3 bg-gray-50 text-left sm:px-6">
-            <%= f.submit('Salvar', class: 'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-500 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500', data: { disable_with: t('.waiting') }) %>
-            <%= link_to('Voltar', admin_admins_path, class: 'ml-4 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500') %>
-          </div>
         </div>
-      <% end %>
+        <section id="multiple-column-form">
+          <div class="row match-height">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <%= form_with model: [:admin, @admin] do |f| %> <%= render('/shared/model_errors', model: @admin) %>
+                      <div class="row">
+                        <div class="col-md-6 col-12">
+                          <div class="form-group">
+                            <%= f.label :name, class: "required" %>
+                            <%= f.text_field :name, required: true, class: "form-control" %>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                          <div class="form-group">
+                            <%= f.label :email, class: "required" %>
+                            <%= f.email_field :email, required: true, class: "form-control" %>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                          <div class="form-group">
+                            <%= f.label :password, class: "required" %>
+                            <%= f.password_field :password, required: !admin.persisted?, class: "form-control" %>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                          <div class="form-group">
+                            <%= f.label :password_confirmation, class: "required" %>
+                            <%= f.password_field :password_confirmation, required: !admin.persisted?, class: "form-control" %>
+                          </div>
+                        </div>
+                        
+                        <div class="form-group col-12">
+                          <div class="form-check">
+                            <div class="checkbox">
+                              <%= f.check_box :is_active, class: "form-check-input" %>
+                              <label for="checkbox5">Ativo</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-start mt-3">
+                          <%= f.submit('Salvar', class: 'btn btn-primary me-1 mb-1 mr-3', data: { disable_with: t('.waiting') }) %>
+
+                          <%= link_to('Voltar', admin_admins_path, class: 'btn btn-light-secondary me-1 mb-1 pr-2') %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <%= render partial: "layouts/admin/footer" %>
     </div>
   </div>
 </div>

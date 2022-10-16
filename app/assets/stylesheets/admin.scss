@@ -1,3 +1,9 @@
 @import 'mazer-assets/css/main/app.css';
 //@import 'mazer-assets/css/main/app-dark.css';
 @import 'mazer-assets/css/shared/iconly.css';
+
+@layer base {
+    label.required:after {
+        content: " *";
+    }
+}
