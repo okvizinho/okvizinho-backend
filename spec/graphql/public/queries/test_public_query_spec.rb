@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe 'State Query' do
+RSpec.describe 'Test Query' do
   let(:query) do
     '
-      query TestStateQuery {
+      query TestQuery {
         test
       }
     '
   end
 
-  it 'brings a state given its id' do
+  it 'brings a test given its id' do
 
     result = PublicSchema.execute(query, context: {}, variables: {})
 

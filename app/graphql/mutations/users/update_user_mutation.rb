@@ -6,7 +6,7 @@ module Mutations
       argument :password, String, required: false
       argument :password_confirmation, String, required: false
 
-      field :me, Types::Models::UserType, null: true
+      field :user, Types::Models::UserType, null: true
       field :errors, [String], null: true
 
       def resolve args
@@ -17,7 +17,7 @@ module Mutations
           args.except! :password_confirmation
         end
 
-        if user.public_send :update, args.to_h
+        if user.public_send :update, args.to_h          
           { user: user }
         else
           { errors: user.errors.full_messages }
