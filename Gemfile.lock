@@ -68,6 +68,9 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    apollo_upload_server (2.0.0.beta.3)
+      graphql (>= 1.8)
+      rails (>= 4.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
@@ -114,6 +117,7 @@ GEM
     ffaker (2.21.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    graphql (2.0.13)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -278,6 +282,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  apollo_upload_server (= 2.0.0.beta.3)
   bootsnap
   capybara
   cssbundling-rails
@@ -286,6 +291,7 @@ DEPENDENCIES
   devise-doorkeeper
   factory_bot_rails
   ffaker
+  graphql
   jbuilder
   jsbundling-rails
   kaminari

@@ -81,3 +81,5 @@ end
 gem 'devise'
 gem 'devise-doorkeeper'
 gem 'kaminari'
+gem 'graphql'
+gem 'apollo_upload_server', '2.0.0.beta.3'
