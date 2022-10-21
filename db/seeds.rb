@@ -27,3 +27,7 @@ Rails.logger.debug 'Created DoorkeeperApp:'
 Rails.logger.debug "Client ID: #{app.uid}"
 Rails.logger.debug "Client Secret: #{app.secret}"
 
+unless City.any?
+  Rake::Task['populate:cities'].invoke
+end
+
