@@ -7,8 +7,8 @@
         <div class="page-title">
           <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-              <h3>Administradores</h3>
-              <p class="text-subtitle text-muted">Lista de Administradores </p>
+              <h3>Usuários</h3>
+              <p class="text-subtitle text-muted">Lista de Usuários </p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
               <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -20,12 +20,9 @@
             </div>
           </div>
         </div>
-        <%= link_to(new_admin_admin_path, class: "btn btn-round btn-primary mb-3") do %>
-          <i class="bi bi-plus-lg"></i> Adicionar
-        <% end %>
         <section class="section">
           <div class="card">
-          <%= form_for(:filters, model: @filters, url: admin_admins_path, method: :get) do |f| %>
+          <%= form_for(:filters, model: @filters, url: admin_users_path, method: :get) do |f| %>
               <div class="card bg-transparent mb-3">
                 <div class="card-header">
                 <span>Filtros</span>
@@ -73,34 +70,28 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <% @admins.each do |admin| %>
+                            <% @users.each do |user| %>
                               <tr>
-                                <td class="text-bold-500"><%= admin.id %></td>
+                                <td class="text-bold-500"><%= user.id %></td>
                                 <td>
-                                <%= link_to(edit_admin_admin_path(admin), class: '') do %>
-                                <b><%= admin.name %></b>
+                               <%= link_to(admin_user_path(user), class: '') do %>
+                                <b><%= user.name %></b>
                                <% end %>
                                 </td>
-                                <td class="text-bold-500"><%= admin.email %></td>
                                 <td>
-                                  <% if admin.is_active.present? %>
+                                <%= user.email %>
+                                </td>
+                                <td>
+                                  <% if user.is_active.present? %>
                                     <span class="badge bg-success">Ativo</span>
                                   <% else %>
                                     <span class="badge bg-danger">Inativo</span>
                                   <% end%>
                                 </td>
-                                <td><%= I18n.l(admin.created_at, format: :long) %></td>
+                                <td><%= I18n.l(user.created_at, format: :long) %></td>
                                 <td>
-                                  <%= link_to(edit_admin_admin_path(admin), class: '') do %>
-                                    <span class="badge bg-primary">
-                                      <i class="bi bi-pencil-square font-medium-1"></i>
-                                    </span>
-                                  <% end %>
-
-                                  <%= link_to(admin_admin_path(admin), data: { turbo_method: :delete, turbo_confirm: 'Você tem certeza?' },  class: '') do %>
-                                    <span class="badge bg-danger">
-                                      <i class="bi bi-trash font-medium-1"></i>
-                                    </span>
+                                  <%= link_to(admin_user_path(user), class: 'btn icon btn-primary') do %>
+                                      <i class="bi bi-person-badge"></i>                                  
                                   <% end %>
                                 </td>
                               </tr>

@@ -1,75 +1,39 @@
- <div id="sidebar" class="active">
-    <div class="sidebar-wrapper active">
-      <div class="sidebar-header position-relative">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="logo">
-            <a href="<%= admin_dashboard_index_path %>">
-              <%= image_tag "logo.png", class: "", alt: "Logo" %>
-            </a>
-          </div>
+ 
+<div id="sidebar" class="active">
+  <div class="sidebar-wrapper active">
+    <div class="sidebar-header position-relative">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="logo">
+          <a href="<%= admin_dashboard_index_path %>">
+            <%= image_tag "logo.png", class: "", alt: "Logo" %>
+          </a>
         </div>
       </div>
-      <div class="sidebar-menu">
-        <ul class="menu">
-          <li class="sidebar-title">Menu</li>
-          <li
+    </div>
+    <div class="sidebar-menu">
+      <ul class="menu">
+        <li class="sidebar-title">Menu</li>
+        <li
                 class="sidebar-item <%= current_page?(admin_dashboard_index_path) && 'active' %>">
-            <a href="<%= admin_dashboard_index_path %>" data-turbo="true" class='sidebar-link'>
-              <i class="bi bi-grid-fill"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li
-                class="sidebar-item <%= current_page?(admin_admins_path) && 'active' %>">
-            <a href="<%= admin_admins_path %>" class='sidebar-link'>
-              <i class="bi bi-person-bounding-box"></i>
-              <span>Administradores</span>
-            </a>
-          </li>
-          <li
-                class="sidebar-item ">
-            <a href="usuarios.html" class='sidebar-link'>
-              <i class="bi bi-people-fill"></i>
-              <span>Usuários</span>
-            </a>
-          </li>
-          <li
-                class="sidebar-item  has-sub">
-            <a href="#" class='sidebar-link'>
-              <i class="bi bi-person-badge-fill"></i>
-              <span>Autenticação</span>
-            </a>
-            <ul class="submenu ">
-              <li class="submenu-item ">
-                <a href="auth-login.html">Login</a>
-              </li>
-              <li class="submenu-item ">
-                <a href="auth-register.html">Register</a>
-              </li>
-              <li class="submenu-item ">
-                <a href="auth-forgot-password.html">Forgot Password</a>
-              </li>
-            </ul>
-          </li>
-          <li
-                class="sidebar-item  has-sub">
-            <a href="#" class='sidebar-link'>
-              <i class="bi bi-x-octagon-fill"></i>
-              <span>Errors</span>
-            </a>
-            <ul class="submenu ">
-              <li class="submenu-item ">
-                <a href="error-403.html">403</a>
-              </li>
-              <li class="submenu-item ">
-                <a href="error-404.html">404</a>
-              </li>
-              <li class="submenu-item ">
-                <a href="error-500.html">500</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+          <a href="<%= admin_dashboard_index_path %>" data-turbo="true" class='sidebar-link'>
+            <i class="bi bi-grid-fill"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="sidebar-item <%= current_page?(admin_admins_path) && 'active' %>">
+          <a href="<%= admin_admins_path %>" class='sidebar-link'>
+            <i class="bi bi-person-bounding-box"></i>
+            <span>Administradores</span>
+          </a>
+        </li>
+        <li class="sidebar-item <%= current_page?(admin_users_path) && 'active' %>">
+          <a href="<%= admin_users_path %>" class='sidebar-link'>
+            <i class="bi bi-people-fill"></i>
+            <span>Usuários</span>
+          </a>
+        </li>
+        
+      </ul>
     </div>
   </div>
+</div>
