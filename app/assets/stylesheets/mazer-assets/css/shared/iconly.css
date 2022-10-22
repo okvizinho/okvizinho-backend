@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Iconly---Bold";
-  src: url(../../../mazer-assets/fonts/Iconly---Bold.eot?28e188c5605bf0f07f2ef925ac6770b7);
-  src: url(../../../mazer-assets/fonts/Iconly---Bold.eot?28e188c5605bf0f07f2ef925ac6770b7) format("embedded-opentype"), url(../../../mazer-assets/fonts/Iconly---Bold.ttf?47ce72491b157373a2741e656d689fd8) format("truetype"), url(../../../mazer-assets/fonts/Iconly---Bold.woff?5990bc92ceb70a74c8b4d3b9b805c80e) format("woff"), url(../../../mazer-assets/fonts/Iconly---Bold.svg?dce2fd97ea6ae5eeb225634bba6f38f0) format("svg");
+  src: url(./mazer-assets/fonts/Iconly---Bold.eot?28e188c5605bf0f07f2ef925ac6770b7);
+  src: url(./mazer-assets/fonts/Iconly---Bold.eot?28e188c5605bf0f07f2ef925ac6770b7) format("embedded-opentype"), url(./mazer-assets/fonts/Iconly---Bold.ttf?47ce72491b157373a2741e656d689fd8) format("truetype"), url(./mazer-assets/fonts/Iconly---Bold.woff?5990bc92ceb70a74c8b4d3b9b805c80e) format("woff"), url(./mazer-assets/fonts/Iconly---Bold.svg?dce2fd97ea6ae5eeb225634bba6f38f0) format("svg");
   font-weight: normal;
   font-style: normal;
-  font-display: block;
-}
+  font-display: block;}
+
 [class^=iconly-bold], [class*=" iconly-bold"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: "Iconly---Bold" !important;
