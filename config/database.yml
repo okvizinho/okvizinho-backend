@@ -84,3 +84,9 @@ production:
   database: okvizinho_backend_production
   username: okvizinho_backend
   password: <%= ENV["OKVIZINHO_BACKEND_DATABASE_PASSWORD"] %>
+
+staging:
+  <<: *default
+  database: okvizinho_backend_production
+  username: okvizinho_backend
+  password: <%= ENV["PUBLY_BACKEND_DATABASE_PASSWORD"] %>
