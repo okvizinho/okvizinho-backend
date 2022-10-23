@@ -1,8 +1,9 @@
 module Mutations
   module Users
     class UpdateUserMutation < Mutations::BaseMutation
-      argument :name, String, required: false
-      argument :email, String, required: false
+      argument :name, String, required: true
+      argument :email, String, required: true
+      argument :phone, String, required: false
       argument :password, String, required: false
       argument :password_confirmation, String, required: false
 

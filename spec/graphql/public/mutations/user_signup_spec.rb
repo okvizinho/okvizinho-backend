@@ -11,6 +11,7 @@ RSpec.describe 'User Signup' do
             id
             name
             email
+            phone
           }
           token {
             accessToken
@@ -27,6 +28,7 @@ RSpec.describe 'User Signup' do
     params = {
       name: 'User 1',
       email: 'user@email.com',
+      phone: '41-98765-4321',
       password: '123456',
       passwordConfirmation: '123456'
 
@@ -44,6 +46,7 @@ RSpec.describe 'User Signup' do
     user = User.find(data['id'])
     expect(user.name).to eql data['name']
     expect(user.email).to eql data['email']
+    expect(user.phone).to eql data['phone']
     expect(user.valid_password?(params[:password]))
 
     access_token = result.dig('data', 'userSignup', 'token', 'accessToken')
