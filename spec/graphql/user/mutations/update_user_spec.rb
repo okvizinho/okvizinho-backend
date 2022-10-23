@@ -10,6 +10,7 @@ RSpec.describe "User Update account" do
             id
             name
             email
+            phone
           }
           errors
         }
@@ -23,10 +24,13 @@ RSpec.describe "User Update account" do
     user = FactoryBot.create(:user)
 
     params = {
-      name: "Maria Fulana"
+      email: "davy@msn.com",
+      name: "Maria Fulana",
+      phone: "41-1234-1234"
     }
 
     expect(user.name).to_not eql params[:name]
+    expect(user.phone).to_not eql params[:phone]
 
     result = UserSchema.execute(query, context: { current_user: user }, variables: { input: params })
 
@@ -37,5 +41,6 @@ RSpec.describe "User Update account" do
     data = result.dig("data", "updateUser", "user")
 
     expect(data["name"]).to eql params[:name]
+    expect(data["phone"]).to eql params[:phone]
   end
 end
