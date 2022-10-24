@@ -9,4 +9,3 @@ require("esbuild").build({
   // custom plugins will be inserted is this array
   plugins: [],
 }).catch(() => process.exit(1));
- 
