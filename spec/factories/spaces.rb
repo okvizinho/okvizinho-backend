@@ -5,5 +5,8 @@ FactoryBot.define do
     description { FFaker::LoremBR.paragraph }
     kind { :parking }
     is_active { true }
+    cover_image do
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/support/space.png'), 'image/png')
+    end
   end
 end
