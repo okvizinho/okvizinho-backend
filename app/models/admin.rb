@@ -6,5 +6,5 @@ class Admin < ApplicationRecord
 
   scope :active, -> { where(is_active: true) }
 
-  scope :inactive, -> { where!(is_active: nil).or(where(is_active: false)) }
+  scope :inactive, -> { where!(is_active: nil).or(Admin.where(is_active: false)) }
 end

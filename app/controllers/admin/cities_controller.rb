@@ -10,7 +10,7 @@ class Admin::CitiesController < AdminController
     is_active = @filters.is_active.to_f
     cities = cities.where('name ilike ?', s) if @filters.q.present?
 
-    if @filters.is_active.present?
+    if @filters.is_active.present?     
       cities = cities.inactive if is_active.zero?
       cities = cities.active unless is_active.zero?
     end
