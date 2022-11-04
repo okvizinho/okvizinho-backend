@@ -8,6 +8,7 @@ class Space < ApplicationRecord
   validates :title, :description, presence: true
 
   scope :active, -> { where(is_active: true) }
+  scope :inactive, -> { where(is_active: false) }
 
   def cover_image_url
     return unless cover_image.attached?
