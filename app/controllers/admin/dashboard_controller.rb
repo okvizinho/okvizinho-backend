@@ -1,7 +1,7 @@
 class Admin::DashboardController < AdminController
 
   def index
-    @admins = Admin
+    @cities = City
     @users = User
   end
 
