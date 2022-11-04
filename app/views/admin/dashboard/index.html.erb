@@ -26,8 +26,8 @@
                         </div>
                       </div>
                       <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                        <h6 class="text-muted font-semibold">Admins</h6>
-                        <h6 class="font-extrabold mb-0"><%= @admins.count %></h6>
+                        <h6 class="text-muted font-semibold">Cidades</h6>
+                        <h6 class="font-extrabold mb-0"><%= @cities.count %></h6>
                       </div>
                     </div>
                   </div>
@@ -86,7 +86,6 @@
               </div>
             </div>
             <div class="row">
-              
             </div>
             <div class="row">
               <div class="col-12 col-xl-4">
@@ -156,7 +155,7 @@
                 <div class="col-12 col-xl-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Melhores comentários</h4>
+                            <h4>Novos usuários</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -164,25 +163,25 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Comment</th>
+                                            <th>Data</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="col-3">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar avatar-md">
-                                                        <%= image_tag "mazer-images/faces/5.jpg", class: "", alt: "" %>
-                                                    </div>
+                                <tr>
+                                    <td class="col-5">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <%= image_tag "mazer-images/faces/5.jpg", class: "", alt: "" %>
+                                            </div>
                               <p class="font-bold ms-3 mb-0">Si Cantik</p>
                             </div>
                           </td>
                           <td class="col-auto">
-                            <p class=" mb-0">Congratulations on your graduation!</p>
+                            <p class=" mb-0">11/10/2022 - às 13:14</p>
                           </td>
                         </tr>
                         <tr>
-                          <td class="col-3">
+                          <td class="col-5">
                             <div class="d-flex align-items-center">
                               <div class="avatar avatar-md">
                                 <%= image_tag "mazer-images/faces/2.jpg", class: "", alt: "" %>
@@ -191,8 +190,7 @@
                             </div>
                           </td>
                           <td class="col-auto">
-                            <p class=" mb-0">Wow amazing design! Can you make another tutorial for
-                              this design?</p>
+                            <p class=" mb-0">11/10/2022 - às 13:14</p>
                           </td>
                         </tr>
                       </tbody>

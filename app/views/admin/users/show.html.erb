@@ -36,6 +36,10 @@
                   <td><b><%= @user.email %></b></td>
                 </tr>
                 <tr>
+                  <td>Telefone</td>
+                  <td><b><%= @user.phone %></b></td>
+                </tr>
+                <tr>
                   <td>Criado Em</td>
                   <td><%= I18n.l(@user.created_at, format: :long) %></td>
                 </tr>
