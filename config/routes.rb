@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :admins
     resources :users, only: %i[index show]
     resources :cities, except: %i[show]
+    resources :spaces, except: %i[show]
 
     resources :dashboard
   end
