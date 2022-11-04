@@ -1,0 +1,33 @@
+pt-BR:
+  admin:
+    cities:
+      index:
+        heading: Cidades
+        search_placeholder: :views.defaults.search_placeholder
+        search_text_by: Busca por nome
+        search_label: :views.defaults.search_label
+        search_label_filter: :views.defaults.search_label_filter
+        delete_confirmation: :views.defaults.delete_confirmation
+        name: Nome
+        uf: Estado
+        created_at: Criado em
+        updated_at: Atualizado em
+        added_at: Adicionado em
+        add: :views.defaults.add
+        edit: :views.defaults.edit
+        filters:
+          is_active: Ativo?
+          status: Status
+        filters_options:
+          1: Ativo
+          0: Inativo
+      edit:
+        heading: "Cidade #%{id}"
+        heading_subtitle: Registrar
+      new:
+        heading: Cidades
+        heading_subtitle: Registrar
+      form:
+        back: :views.defaults.back
+        save: :views.defaults.save
+        waiting: :views.defaults.waiting
