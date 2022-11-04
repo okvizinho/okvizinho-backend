@@ -1,5 +1,5 @@
 class Admin::CitiesController < AdminController
-  before_action :set_admin, only: %i[edit update destroy]
+  before_action :set_city, only: %i[edit update destroy]
 
   def index
     @filters = parse_filters
@@ -63,7 +63,7 @@ class Admin::CitiesController < AdminController
                                   ])
   end
 
-  def set_admin
+  def set_city
     @city = City.find(params[:id])
   end
 end
