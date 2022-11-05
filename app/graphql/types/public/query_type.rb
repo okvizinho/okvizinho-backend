@@ -25,6 +25,16 @@ module Types
       def city(args)
         City.find_by(id: args[:id])
       end
+
+      field :spaces, resolver: Resolvers::SpacesResolver
+
+      field :space, Types::Models::SpaceType, null: true do
+        argument :id, ID, required: true
+      end
+
+      def space(args)
+        Space.active.find_by(id: args[:id])
+      end
     end
   end
 end
