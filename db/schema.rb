@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_03_234148) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_131616) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,6 +106,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_234148) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 
+  create_table "places", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.string "title"
+    t.string "description"
+    t.boolean "is_active"
+    t.string "district"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_places_on_city_id"
+  end
+
   create_table "spaces", force: :cascade do |t|
     t.bigint "city_id", null: false
     t.integer "kind"
@@ -137,5 +148,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_234148) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
+  add_foreign_key "places", "cities"
   add_foreign_key "spaces", "cities"
 end
