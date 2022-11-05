@@ -26,14 +26,14 @@ module Types
         City.find_by(id: args[:id])
       end
 
-      field :spaces, resolver: Resolvers::SpacesResolver
+      field :places, resolver: Resolvers::PlacesResolver
 
-      field :space, Types::Models::SpaceType, null: true do
+      field :place, Types::Models::PlaceType, null: true do
         argument :id, ID, required: true
       end
 
-      def space(args)
-        Space.active.find_by(id: args[:id])
+      def place(args)
+        Place.active.find_by(id: args[:id])
       end
     end
   end

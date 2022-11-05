@@ -1,0 +1,85 @@
+<div id="app">
+  <%= render partial: "layouts/admin/sidebar" %>
+  <div id="main" class="layout-navbar">
+    <%= render partial: "layouts/admin/navbar" %>
+    <div id="main-content">
+      <div class="page-heading">
+        <div class="page-title">
+          <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+              <h3>Espaço</h3>
+              <p class="text-subtitle text-muted">Espaço / <b>Registrar</b></p>
+            </div>
+          </div>
+        </div>
+        <section id="multiple-column-form">
+          <div class="row match-height">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <%= form_with model: [:admin, @place] do |f| %>
+                      <%= render('/shared/model_errors', model: @place) %>
+                      <div class="row">
+                        <div class="col-md-12 col-12">
+                          <div class="form-group">
+                            <%= f.label :title, class: "required" %>
+                            <%= f.text_field :title, required: true, class: "form-control" %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-12">
+                          <div class="form-group">
+                            <%= f.label :city_id, class: "required" %>
+                            <%= f.select(:city_id, options_for_select(@cities.pluck(:name, :id), @place.city_id), {include_blank: true }, { required: true, class: 'form-control'}) %>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                          <div class="form-group">
+                            <%= f.label :district, class: "required" %>
+                            <%= f.text_field :district, required: true, class: "form-control" %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-12">
+                          <div class="form-group">
+                            <%= f.label :description, class: "required" %>
+                            <%= f.text_area :description, required: true, class: "form-control" %>
+                          </div>
+                        </div>
+                        <div class="col-md-12 col-12">
+                          <div class="form-group">
+                            <%= f.label :cover_image, class: "required" %><br>
+                            <%= f.file_field :cover_image, class: "mt-2 form-control" %><br>
+                            <% if @place.cover_image.attached? %>
+                              <%= image_tag place.cover_image_url, class: "justify-content:", style: "width: 120px; height: 120px;" %>
+                            <% end %>
+                          </div>
+                        </div>
+                        <div class="form-group col-12">
+                          <div class="form-check">
+                            <div class="checkbox mt-2">
+                              <%= f.check_box :is_active, class: "form-check-input" %>
+                              <label for="checkbox5">Ativo</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-start mt-3">
+                          <%= f.submit('Salvar', class: 'btn btn-primary me-1 mb-1 mr-3', data: { disable_with: t('.waiting') }) %>
+                          <%= link_to('Voltar', admin_places_path, class: 'btn btn-light-secondary me-1 mb-1 pr-2') %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <%= render partial: "layouts/admin/footer" %>
+    </div>
+  </div>
+</div>
