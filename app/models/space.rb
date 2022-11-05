@@ -1,5 +1,6 @@
 class Space < ApplicationRecord
-  belongs_to :city
+  belongs_to :place
+  belongs_to :user
 
   has_one_attached :cover_image
 

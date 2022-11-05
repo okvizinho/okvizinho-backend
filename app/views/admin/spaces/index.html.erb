@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
               <h3>Espaços</h3>
-              <p class="text-subtitle text-muted">Lista de espaços </p>
+              <p class="text-subtitle text-muted">Existe um total de <%= @spaces.count %> espaços </p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
               <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -33,7 +33,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-3">
-                      <small>Busca por nome</small>
+                      <small>Busca por título</small>
                       <%= f.text_field(:q, class: "form-control", placeholder: t('.search_text_by')) %>
                     </div>
                     <div class="col-md-3">
@@ -66,9 +66,11 @@
                             <tr>
                               <th>ID</th>
                               <th>TÍTULO</th>
-                              <th>CIDADE</th>
+                              <th>LUGAR</th>
                               <th>TIPO</th>
                               <th>IMAGEM</th>
+                              <th>ANFITRIÃO</th>
+                              <th>DESTAQUE</th>
                               <th>STATUS</th>
                               <th>CRIADO EM</th>
                               <th>AÇÃO</th>
@@ -83,10 +85,20 @@
                                     <b><%= space.title %></b>
                                   <% end %>
                                 </td>
-                                <td><%= space.city.name %></td>
+                                <td><%= space.place.title %>
+                                <br><%= space.place.district %> - <%= space.place.city.name %> </td>
                                 <td><%= space.kind %></td>
                                 <td>
-                                <%= image_tag space.cover_image_url, class: "justify-content:", style: "width: 120px; height: 120px;" %>
+                                <%= image_tag space.cover_image_url, class: "justify-content:", style: "width: 120px; height: auto;" %>
+                                </td>
+                                <td><%= space.user.name %></td>
+                                
+                                <td>
+                                  <% if space.highlight.present? %>
+                                    <span class="badge bg-success">Sim</span>
+                                  <% else %>
+                                    <span class="badge bg-secondary">Não</span>
+                                  <% end%>
                                 </td>
                                 <td>
                                   <% if space.is_active.present? %>
@@ -95,6 +107,7 @@
                                     <span class="badge bg-danger">Inativo</span>
                                   <% end%>
                                 </td>
+
                                 <td><%= I18n.l(space.created_at, format: :long) %></td>
                                 <td>
                                   <%= link_to(edit_admin_space_path(space), class: '') do %>

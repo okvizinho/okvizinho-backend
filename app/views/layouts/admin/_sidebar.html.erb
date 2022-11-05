@@ -36,6 +36,13 @@
             <span>Lugares</span>
           </a>
         </li>
+        </li>
+         <li class="sidebar-item <%= current_page?(admin_spaces_path) && 'active' %>">
+          <a href="<%= admin_spaces_path %>" class='sidebar-link'>
+            <i class="bi bi-car-front"></i>
+            <span>Espaços</span>
+          </a>
+        </li>
         <li class="sidebar-item <%= current_page?(admin_cities_path) && 'active' %>">
           <a href="<%= admin_cities_path %>" class='sidebar-link'>
             <i class="bi bi-geo-alt"></i>

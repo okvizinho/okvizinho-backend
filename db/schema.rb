@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_05_131616) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_05_135847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -118,15 +118,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_131616) do
   end
 
   create_table "spaces", force: :cascade do |t|
-    t.bigint "city_id", null: false
     t.integer "kind"
     t.string "title"
     t.string "description"
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "district"
-    t.index ["city_id"], name: "index_spaces_on_city_id"
+    t.bigint "user_id", null: false
+    t.bigint "place_id", null: false
+    t.string "dimensions"
+    t.boolean "highlight"
+    t.index ["place_id"], name: "index_spaces_on_place_id"
+    t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -149,5 +152,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_05_131616) do
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "places", "cities"
-  add_foreign_key "spaces", "cities"
+  add_foreign_key "spaces", "places"
+  add_foreign_key "spaces", "users"
 end

@@ -4,11 +4,11 @@ pt-BR:
       index:
         heading: Espaços
         search_placeholder: :views.defaults.search_placeholder
-        search_text_by: Busca por nome
+        search_text_by: Busca por título
         search_label: :views.defaults.search_label
         search_label_filter: :views.defaults.search_label_filter
         delete_confirmation: :views.defaults.delete_confirmation
-        name: Nome
+        title: Título
         description: Descrição 
         kind: Tipo
         created_at: Criado em

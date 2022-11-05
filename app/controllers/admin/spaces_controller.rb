@@ -1,6 +1,7 @@
 class Admin::SpacesController < AdminController
   before_action :set_space, only: %i[edit update destroy]
-  before_action :set_cities
+  before_action :set_places
+  before_action :set_users
 
   def index
     @filters = parse_filters
@@ -58,13 +59,15 @@ class Admin::SpacesController < AdminController
 
   def form_params
     params.require(:space).permit(%i[
-                                    city_id
+                                    place_id
+                                    user_id
                                     kind
                                     title 
                                     description
                                     cover_image
-                                    district
+                                    dimensions
                                     is_active
+                                    highlight
                                   ])
   end
 
@@ -72,7 +75,11 @@ class Admin::SpacesController < AdminController
     @space = Space.find(params[:id])
   end
 
-  def set_cities 
-    @cities = City.active
+  def set_places
+    @places = Place.active
+  end
+
+  def set_users
+    @users = User.all.order(name: :asc)
   end
 end
