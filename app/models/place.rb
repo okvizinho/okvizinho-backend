@@ -1,6 +1,7 @@
 class Place < ApplicationRecord
   belongs_to :city
-
+  has_many :spaces
+  
   has_one_attached :cover_image
   
   validates :title, :description, presence: true

@@ -1,13 +1,15 @@
 FactoryBot.define do
   factory :space do
-    city
+    place
+    user
     sequence(:title) { |i| "Espaço #{i}" }
     description { FFaker::LoremBR.paragraph }
     kind { :parking }
     is_active { true }
-    district { "Centro" }
+    highlight { false }
+    dimensions { '3m largura x 7m comprimento' }
     cover_image do
-      Rack::Test::UploadedFile.new(Rails.root.join('spec/support/space.png'), 'image/png')
+      Rack::Test::UploadedFile.new(Rails.root.join('spec/support/garage.png'), 'image/png')
     end
   end
 end

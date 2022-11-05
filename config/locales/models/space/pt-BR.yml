@@ -2,12 +2,14 @@ pt-BR:
   activerecord:
     attributes:
       space:
+        place_id: Lugar
+        user_id: Anfitrião
         title: Título 
         description: Descrição
         kind: Tipo 
-        city_id: Cidade
-        district: Bairro
         cover_image: Imagem de Capa
+        dimensions: Dimensões (Comprimento x largura x altura)
+        highlight: Destaque
         is_active: Ativa?
         created_at: Criado em
         updated_at: Atualizado em
