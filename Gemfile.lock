@@ -244,6 +244,10 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    search_object (1.2.5)
+    search_object_graphql (1.0.3)
+      graphql (> 1.8)
+      search_object (~> 1.2.2)
     selenium-webdriver (4.4.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -312,6 +316,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   redis (~> 4.0)
   rspec-rails
+  search_object_graphql
   selenium-webdriver
   sprockets-rails
   stimulus-rails
