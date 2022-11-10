@@ -81,7 +81,7 @@
                               <tr>
                                 <td class="text-bold-500"><%= space.id %></td>
                                 <td>
-                                  <%= link_to(edit_admin_space_path(space), class: '') do %>
+                                  <%= link_to(edit_admin_space_path(space), class: '', "data-turbo" => false) do %>
                                     <b><%= space.title %></b>
                                   <% end %>
                                 </td>
@@ -110,7 +110,7 @@
 
                                 <td><%= I18n.l(space.created_at, format: :long) %></td>
                                 <td>
-                                  <%= link_to(edit_admin_space_path(space), class: '') do %>
+                                  <%= link_to(edit_admin_space_path(space), class: '', "data-turbo" => false) do %>
                                     <span class="badge bg-primary">
                                       <i class="bi bi-pencil-square font-medium-1"></i>
                                     </span>
