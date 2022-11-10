@@ -30,7 +30,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group">
                             <%= f.label :kind, class: "required" %>
-                            <%= f.select(:kind, options_for_select(t('.kind_options').map(&:reverse), @space.kind), {include_blank: true }, { required: true, class: 'form-control'}) %>
+                            <%= f.select(:kind, options_for_select(t('.kind_options').map(&:reverse), @space.kind), {include_blank: true }, { required: true, class: 'form-select'}) %>
                           </div>
                         </div>
                       </div>
@@ -38,7 +38,7 @@
                         <div class="col-md-6 col-12">
                           <div class="form-group">
                             <%= f.label :place_id, class: "required" %>
-                            <%= f.select(:place_id, options_for_select(@places.pluck(:title, :id), @space.place_id), {include_blank: true }, { required: true, class: 'form-control'}) %>
+                            <%= f.select(:place_id, options_for_select(@places.pluck(:title, :id), @space.place_id), {include_blank: true }, { required: true, class: 'js-choice-place form-select'}) %>
                           </div>
                         </div>
                         <div class="col-md-6 col-12">
@@ -51,7 +51,7 @@
                        <div class="col-md-12 col-12">
                           <div class="form-group">
                            <%= f.label :user_id, class: "required" %>
-                            <%= f.select(:user_id, options_for_select(@users.pluck(:name, :id), @space.user_id), {include_blank: true }, { required: true, class: 'form-control'}) %>
+                            <%= f.select(:user_id, options_for_select(@users.pluck(:name, :id), @space.user_id), {include_blank: true }, { required: true, class: 'js-choice-user form-select'}) %>
                           </div>
                         </div>
                       <div class="row">

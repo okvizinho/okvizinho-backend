@@ -76,10 +76,10 @@ class Admin::SpacesController < AdminController
   end
 
   def set_places
-    @places = Place.active
+    @places = Place.active.order(title: :asc).map { |place| { id: place.id, title: "#{place.title} - #{place.city.name}" } }
   end
 
   def set_users
-    @users = User.all.order(name: :asc)
+    @users = User.all.order(name: :asc).map { |user| { id: user.id, name: "#{user.name} - #{user.email}" } }
   end
 end
