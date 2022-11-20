@@ -89,7 +89,7 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  Rails.application.routes.default_url_options = {host: 'https://ok-vizinho-staging.herokuapp.com'}
+  Rails.application.routes.default_url_options = {host: 'https://okvizinho-staging.fly.dev'}
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
